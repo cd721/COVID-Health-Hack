@@ -1,13 +1,15 @@
-// const http = require('http');
-// const fs = require('fs');
-const path = require('path');
-// const url = require('url');
-const express = require('express');
 
+const fs = require('fs');
+const path = require('path');
+
+const fetch = require('node-fetch');
+const express = require('express');
+const https = require('follow-redirects').https;
 
 const hostname = '127.0.0.1';
 const PORT = process.env.PORT || 3000;
 
+//set up server
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -15,44 +17,33 @@ app.listen(PORT);
 console.log(`Server on port ${PORT}`);
 
 
-// const server = http.createServer((req, res) => {
+//make get request
+var options = {
+    'method': 'GET',
+    'hostname': 'api.yelp.com',
+    'path': '/v3/businesses/search?latitude=37.7670169511878&longitude=-122.42184275',
+    'headers': {
+        'Authorization': `Bearer ${process.env.YELP_API_KEY}`,
+        'Cookie': '__cfduid=daff0cc2c95eb471d39b0014ed24cd6251589858589'
+    },
+    'maxRedirects': 20
+};
 
-//     res.statusCode = 200;
-//     res.setHeader('Content-Type', 'text/html')
-//     res.end('<h1>Hello World</h1>');
-// })
+var req = https.request(options, function (res) {
+    var chunks = [];
 
-// server.listen(port, () => {
-//     console.log(`Server running at port ${port}`);
-// })
+    res.on("data", function (chunk) {
+        chunks.push(chunk);
+    });
 
+    res.on("end", function (chunk) {
+        var body = Buffer.concat(chunks);
+        console.log(body.toString());
+    });
 
-// /**
-//  * Reads the html file (index.html). If the file is successfully read, the server is created.
-//  */
-// fs.readFile('index.html', (err, html) => {
-//     if (err) {
-//         throw err;
-//     }
-//     console.log(__dirname);
-//     createServer(html);
-// });
+    res.on("error", function (error) {
+        console.error(error);
+    });
+});
 
-
-// /**
-//  * Creates the server
-//  * @param {*} html 
-//  */
-// function createServer(html) {
-//     const server = http.createServer((req, res) => {
-//         res.statusCode = 200
-//         res.setHeader('Content-Type', 'text/html');
-//         res.write(html)
-//         res.end();
-//     });
-
-//     server.listen(port, hostname, () => {
-//         console.log(`Server running at http://${hostname}:${port}/`)
-//     })
-// }
-
+req.end();
