@@ -1,7 +1,3 @@
-
-
-
-
 /**
  * Get the user's location and displays it on the page. This function will be called when the site loads.
  */
@@ -10,11 +6,14 @@ function getUserLocation() {
         navigator.geolocation.getCurrentPosition(async position => {
             document.getElementById("placesNearYou").innerText = "Places near you:";
 
-            // const api_url = `https://api.yelp.com/v3/businesses/search?latitude=37.7670169511878&longitude=-122.42184275`;
-            // const reponse = await fetch(api_url);
+
+            // const api_url = '';
+            // const response = await fetch(api_url);
+            // console.log(response.headers.get("Content-Type"));
+
             // const json = await response.json();
             // console.log(json);
-        }, locationFailure);
+        });
     } else {
         document.getElementById("placesNearYou").innerHTML = "This browser does not support geolocation.";
     }
@@ -40,4 +39,3 @@ function locationFailure(position) {
 /**
  *
  */
-
