@@ -5,35 +5,153 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Project title</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script type="text/javascript" src="script.js" async defer></script>
 </head>
 
 <body onload=getUserLocation()>
     <h1>Project Title</h1>
     <h3 id="placesNearYou">To see places near you, allow this site to view your location.</h3>
-    <div>
-        <ul>
-            <li>
-                <div></div>Place 1
-            </li>
-            <li>
-                <div></div>Place 2
-            </li>
-            <li>
-                <div></div>Place 3
-            </li>
-            <li>
-                <div></div>Place 4
-            </li>
-            <li>
-                <div></div>Place 5
-            </li>
+    <div class="suggestions container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm" id="businessListing1">
+                    <img src="" alt="" class="card-img-top" id="businessImg1">
+                    <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-between" id="businessName1"></h5>
 
-        </ul>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-success"></div>
+                        </div>
+
+                        <div id="infoBusiness1"></div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group d-flex justify-content-between">
+                                <a class="btn btn-sm btn-outline-secondary mt-4" id="callBusiness1"></a>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm" id="businessListing2">
+                    <img src="" alt="" class="card-img-top" id="businessImg2">
+                    <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-between" id="businessName2"></h5>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-success"></div>
+                        </div>
+                        <div id="infoBusiness2"></div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group d-flex justify-content-between">
+                                <a class="btn btn-sm btn-outline-secondary mt-4" id="callBusiness2"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm" id="businessListing3">
+                    <img src="" alt="" class="card-img-top  " id="businessImg3">
+                    <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-between" id="businessName3"></h5>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-success"></div>
+                        </div>
+
+                        <div id="infoBusiness3"></div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group d-flex justify-content-between">
+                                <a class="btn btn-sm btn-outline-secondary mt-4" id="callBusiness3"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm" id="businessListing4">
+                    <img src="" alt="" class="card-img-top" id="businessImg4">
+                    <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-between" id="businessName4"></h5>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-success"></div>
+                        </div>
+                        <div id="infoBusiness4"></div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group d-flex justify-content-between">
+                                <a class="btn btn-sm btn-outline-secondary mt-4" id="callBusiness4"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm" id="businessListing5">
+                    <img src="" alt="" class="card-img-top" id="businessImg5">
+                    <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-between" id="businessName5"></h5>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-success"></div>
+                        </div>
+                        <div id="infoBusiness5"></div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group d-flex justify-content-between">
+                                <a class="btn btn-sm btn-outline-secondary mt-4" id="callBusiness5"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm" id="businessListing6">
+                    <img src="" alt="" class="card-img-top" id="businessImg6">
+                    <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-between" id="businessName6"></h5>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-success"></div>
+                        </div>
+
+                        <div id="infoBusiness6"></div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group d-flex justify-content-between">
+                                <a class="btn btn-sm btn-outline-secondary mt-4" id="callBusiness6"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

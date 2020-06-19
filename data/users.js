@@ -14,21 +14,27 @@ let exportedMethods = {
 
   async getUserById(id) {
     const userCollection = await users();
-    const user = await userCollection.findOne({_id: id});
+    const user = await userCollection.findOne({
+      _id: id
+    });
     if (!user) throw 'User not found';
     return user;
   },
 
   async getUserbyEmail(email) {
     const userCollection = await users();
-    const user = await userCollection.findOne({email: email});
+    const user = await userCollection.findOne({
+      email: email
+    });
     return user;
   },
 
 
   async getUserbyUsername(username) {
     const userCollection = await users();
-    const user = await userCollection.findOne({username: username});
+    const user = await userCollection.findOne({
+      username: username
+    });
     return user;
   },
 
@@ -53,7 +59,9 @@ let exportedMethods = {
 
   async removeUser(id) {
     const userCollection = await users();
-    const deletionInfo = await userCollection.removeOne({_id: id});
+    const deletionInfo = await userCollection.removeOne({
+      _id: id
+    });
     if (deletionInfo.deletedCount === 0) {
       throw `Could not delete user with id of ${id}`;
     }
@@ -65,7 +73,7 @@ let exportedMethods = {
     const hashedPassword = bcrypt.hash(updatedUser.password, 10);
 
     let userUpdateInfo = {
-      username : username,
+      username: username,
       firstName: updatedUser.firstName,
       lastName: updatedUser.lastName,
       email: updatedUser.email,
@@ -75,7 +83,11 @@ let exportedMethods = {
 
     const userCollection = await users();
 
-    const updateInfo = await userCollection.updateOne({_id: id}, {$set: userUpdateInfo});
+    const updateInfo = await userCollection.updateOne({
+      _id: id
+    }, {
+      $set: userUpdateInfo
+    });
     if (!updateInfo.matchedCount && !updateInfo.modifiedCount) throw 'Update failed';
 
     return await this.getUserById(id);
