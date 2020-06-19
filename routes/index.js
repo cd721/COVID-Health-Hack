@@ -25,7 +25,9 @@ const constructorMethod = (app) => {
 
 router
 	.route('/')
-	.post(getBusinessData);
+	.post(getBusinessData)
+	.get(constructorMethod);
+
 
 
 module.exports = router;

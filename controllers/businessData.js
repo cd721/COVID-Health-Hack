@@ -31,7 +31,3 @@ exports.getBusinessData = async (req, res, next) => {
         });
     }
 };
-
-exports.getDetailedBusinessData = async (req, res, next) => {
-
-}
