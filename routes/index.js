@@ -14,7 +14,7 @@ const businessData = require('../data/businesses.js');
 
 const constructorMethod = (app) => {
 	app.get('/', async (req, res) => {
-		res.render('index.html');
+		res.sendFile('index.html');
 	});
 
 	app.use('*', (req, res) => {

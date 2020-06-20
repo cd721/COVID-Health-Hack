@@ -23,15 +23,11 @@ app.use(express.urlencoded({
 app.use('/businesses/', router);
 app.use('/', router);
 
-app.listen(port, () => {
-    console.log(`Server on port ${port}`);
-});
-
-
-
-
-
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.listen(port, () => {
+    console.log(`Server on port ${port}`);
 });
