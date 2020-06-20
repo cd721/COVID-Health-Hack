@@ -15,7 +15,7 @@ app.use(cors());
 // Body Parser Middleware
 app.use(express.json());
 app.use(express.urlencoded({
-    extended: false
+    extended: true
 }));
 
 
