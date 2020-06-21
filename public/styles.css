@@ -3,3 +3,14 @@
 .badge-danger {
     max-height: 24px;
 }
+
+.progress {
+    background: rgb(255, 0, 0) !important;
+    background: linear-gradient(90deg, rgba(0, 255, 0, 1) 0%, rgba(255, 240, 0, 1) 50%, rgba(255, 0, 0, 1) 100%) !important;
+    flex-direction: row-reverse;
+    width: 100%;
+}
+
+.progress-bar {
+    width: 25%;
+}

@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script type="text/javascript" src="script.js" async defer></script>
+
 </head>
 
-<body onload=getUserLocation()>
+<body onload=getUserLocation() class="bg-light">
     <h1>Project Title</h1>
     <h3 id="placesNearYou">To see places near you, allow this site to view your location.</h3>
     <div class="suggestions container">
@@ -25,7 +25,9 @@
                         <h5 class="card-title d-flex justify-content-between" id="businessName1"></h5>
 
                         <div class="progress mb-4">
-                            <div class="progress-bar bg-success"></div>
+                            <!--The percentage displayed on the progress bar will be 100 - the width of the progress bar defined in styles.css-->
+                            <div class="progress-bar bg-light" role="progressbar" aria-valuenow="" aria-valuemin="0"
+                                aria-valuemax="100"></div>
                         </div>
 
                         <div id="infoBusiness1"></div>
@@ -50,7 +52,8 @@
                     <div class="card-body">
                         <h5 class="card-title d-flex justify-content-between" id="businessName2"></h5>
                         <div class="progress mb-4">
-                            <div class="progress-bar bg-success"></div>
+                            <div class="progress-bar bg-light" role="progressbar" aria-valuenow="25" aria-valuemin="0"
+                                aria-valuemax="100"></div>
                         </div>
                         <div id="infoBusiness2"></div>
                         <div class="d-flex justify-content-between align-items-center">
@@ -68,7 +71,8 @@
                     <div class="card-body">
                         <h5 class="card-title d-flex justify-content-between" id="businessName3"></h5>
                         <div class="progress mb-4">
-                            <div class="progress-bar bg-success"></div>
+                            <div class="progress-bar bg-light" role="progressbar" aria-valuenow="25" aria-valuemin="0"
+                                aria-valuemax="100"></div>
                         </div>
 
                         <div id="infoBusiness3"></div>
@@ -88,7 +92,8 @@
                     <div class="card-body">
                         <h5 class="card-title d-flex justify-content-between" id="businessName4"></h5>
                         <div class="progress mb-4">
-                            <div class="progress-bar bg-success"></div>
+                            <div class="progress-bar bg-light" role="progressbar" aria-valuenow="25" aria-valuemin="0"
+                                aria-valuemax="100"></div>
                         </div>
                         <div id="infoBusiness4"></div>
 
@@ -106,7 +111,8 @@
                     <div class="card-body">
                         <h5 class="card-title d-flex justify-content-between" id="businessName5"></h5>
                         <div class="progress mb-4">
-                            <div class="progress-bar bg-success"></div>
+                            <div class="progress-bar bg-light" role="progressbar" aria-valuenow="25" aria-valuemin="0"
+                                aria-valuemax="100"></div>
                         </div>
                         <div id="infoBusiness5"></div>
 
@@ -124,7 +130,8 @@
                     <div class="card-body">
                         <h5 class="card-title d-flex justify-content-between" id="businessName6"></h5>
                         <div class="progress mb-4">
-                            <div class="progress-bar bg-success"></div>
+                            <div class="progress-bar bg-light" role="progressbar" aria-valuenow="25" aria-valuemin="0"
+                                aria-valuemax="100"></div>
                         </div>
 
                         <div id="infoBusiness6"></div>
@@ -143,6 +150,7 @@
 
 
     </div>
+    <script type="text/javascript" src="script.js" async defer></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
@@ -152,6 +160,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
+
 </body>
 
 </html>

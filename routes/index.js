@@ -3,12 +3,18 @@
 const express = require('express');
 const router = express.Router();
 const {
-	getBusinessData
-} = require('../controllers/businessData.js')
+	getYelpBusinessData
+} = require('../controllers/yelpBusinessData.js')
+const {
+	getFoursquareBusinessData
+} = require('../controllers/foursquareBusinessData.js')
 // const userData = data.users;
 // const businessData = data.businesses;
 const userData = require('../data/users.js');
 const businessData = require('../data/businesses.js');
+const {
+	getCheckinData
+} = require('../controllers/foursquareBusinessData.js');
 
 
 
@@ -25,7 +31,8 @@ const constructorMethod = (app) => {
 
 router
 	.route('/')
-	.post(getBusinessData)
+	.post(getYelpBusinessData)
+	.post(getFoursquareBusinessData)
 	.get(constructorMethod);
 
 

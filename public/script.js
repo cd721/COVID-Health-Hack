@@ -8,21 +8,7 @@ var numListings = 6;
  */
 function getUserLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(async position => {
-            document.getElementById("placesNearYou").innerText = "Places near you:";
-            console.log(position);
-            var i = 1;
-            console.log(i);
-
-            //was making too many api requests per second
-            const loadResults = setInterval(() => {
-                showResult(i);
-                i++;
-                if (i > numListings) {
-                    clearInterval(loadResults);
-                }
-            }, 700);
-        });
+        navigator.geolocation.getCurrentPosition(locationSuccess, locationFailure);
     } else {
         document.getElementById("placesNearYou").innerHTML = "This browser does not support geolocation.";
     }
@@ -34,7 +20,19 @@ function getUserLocation() {
  * @param position a GeolocationPosition object (the user's location)
  */
 function locationSuccess(position) {
+    document.getElementById("placesNearYou").innerText = "Places near you:";
+    console.log(position);
+    var i = 1;
+    console.log(i);
 
+    //was making too many api requests per second
+    const loadResults = setInterval(() => {
+        showResult(i);
+        i++;
+        if (i > numListings) {
+            clearInterval(loadResults);
+        }
+    }, 700);
 }
 
 /**
@@ -55,7 +53,7 @@ async function showResult(businessIndex) {
         term: 'verona',
         location: 'randolph nj'
     }
-    const businessSearchResults = await fetch('/businesses/', {
+    const businessSearchResultsYelp = await fetch('/businesses/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -64,33 +62,31 @@ async function showResult(businessIndex) {
 
 
     });
-    const businessSearchResultsJson = await businessSearchResults.json();
+    const businessSearchResultsJson = await businessSearchResultsYelp.json();
 
-    const currentBusiness = businessSearchResultsJson.data.jsonBody.businesses[businessIndex - 1];
+    const currentBusinessYelp = businessSearchResultsJson.data.jsonBody.businesses[businessIndex - 1];
     //if business has no img, yelp returns image_url of empty string
-    const cardImgUrl = currentBusiness.image_url
+    const cardImgUrl = currentBusinessYelp.image_url
     document.getElementById(`businessImg${businessIndex}`).src = cardImgUrl;
 
-    const businessName = currentBusiness.name;
+    const businessName = currentBusinessYelp.name;
     document.getElementById(`businessName${businessIndex}`).innerHTML = businessName;
 
     const yelpPageLink = document.createElement("a");
-    yelpPageLink.href = currentBusiness.url;
+    yelpPageLink.href = currentBusinessYelp.url;
     yelpPageLink.innerText = "Visit the Yelp Page";
     document.getElementById(`infoBusiness${businessIndex}`).appendChild(yelpPageLink);
 
 
-
-
-    const formattedPhoneNumber = currentBusiness.display_phone;
+    const formattedPhoneNumber = currentBusinessYelp.display_phone;
     document.getElementById(`callBusiness${businessIndex}`).innerHTML = `Call ${formattedPhoneNumber}`;
-    document.getElementById(`callBusiness${businessIndex}`).href = `tel:${currentBusiness.display_phone}`;
+    document.getElementById(`callBusiness${businessIndex}`).href = `tel:${currentBusinessYelp.display_phone}`;
 
     const idSearchBody = {
-        id: currentBusiness.id,
+        id: currentBusinessYelp.id,
         location: 'randolph nj'
     }
-    const businessResult = await fetch('/businesses/', {
+    const businessResultYelp = await fetch('/businesses/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -98,9 +94,9 @@ async function showResult(businessIndex) {
         body: JSON.stringify(idSearchBody)
     });
 
-    const detailedBusinessResult = await businessResult.json();
+    const detailedBusinessResultYelp = await businessResultYelp.json();
     //console.log(detailedJson);
-    const currentBusinessDetailed = detailedBusinessResult.data.jsonBody;
+    const currentBusinessDetailed = detailedBusinessResultYelp.data.jsonBody;
     const open = currentBusinessDetailed.hours[0].is_open_now;
 
     if (!open) {
@@ -115,8 +111,9 @@ async function showResult(businessIndex) {
     }
 
     const supportedTransactions = currentBusinessDetailed.transactions;
-
+    //todo
     supportedTransactions.forEach((currentTransaction) => {
+        console.log(`Business ${businessIndex} supports ${currentTransaction}`);
         switch (currentTransaction) {
             case "pickup":
                 takeoutIcon();
@@ -128,7 +125,7 @@ async function showResult(businessIndex) {
         }
     });
 }
-
+//todo
 function addListingContainer() {
     console.log("w");
     numListings++;
@@ -157,7 +154,7 @@ function addListingContainer() {
     document.getElementById("suggestionsList").appendChild(listElement.appendChild(card));
 
 }
-
+//todo
 function takeoutIcon() {
     let takeoutIcon = document.createElement("svg");
     takeoutIcon.className = "bi bi basket3";
@@ -179,7 +176,7 @@ function takeoutIcon() {
 
     return takeoutIcon;
 }
-
+//todo
 function deliveryIcon() {
     const deliveryIcon = document.createElement("svg");
     deliveryIcon.className = "bi bi house";

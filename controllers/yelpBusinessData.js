@@ -2,13 +2,13 @@ const yelp = require('yelp-fusion');
 const apiKey = process.env.YELP_API_KEY;
 const client = yelp.client(apiKey);
 
-exports.getBusinessData = async (req, res, next) => {
+exports.getYelpBusinessData = async (req, res, next) => {
     searchRequest = req.body;
 
     try {
         if (req.body.id) {
             let data = await client.business(req.body.id);
-            let prettyJson = JSON.stringify(data.jsonBody, null, 4);
+            //      let prettyJson = JSON.stringify(data.jsonBody, null, 4);
             //	console.log(prettyJson);
             return res.status(200).json({
                 success: true,
